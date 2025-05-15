@@ -17,5 +17,9 @@ model User {
   gender   String?                             // Gender (Optional field)
   age      Int?                                 // Age (Optional field)
   location String?                             // Location (Optional field)
+  otp             String?
+  otpExpiry       DateTime?
+  resetUUID       String?
+  resetUUIDExpiry DateTime?
 }
 

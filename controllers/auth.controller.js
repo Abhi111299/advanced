@@ -1,4 +1,6 @@
-import { registerUser, loginUser } from '../services/auth.service.js';
+import { registerUser, loginUser,  handleSendOtp,
+  handleVerifyOtpAndGenerateUUID,
+  handlePasswordReset,} from '../services/auth.service.js';
 
 export const register = async (req, res, next) => {
   try {
@@ -12,6 +14,48 @@ export const register = async (req, res, next) => {
 export const login = async (req, res, next) => {
   try {
     const result = await loginUser(req.body);
+    res.json(result);
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const forgotPassword = async (req, res, next) => {
+  try {
+    const { email } = req.body;
+    const result = await handleSendOtp(email);
+    res.json({ success: true, message: 'Reset email sent.', result });
+
+  } catch (err){
+    next(err);
+  }
+
+}
+
+export const verifyOtp = async (req, res, next) => {
+  try {
+    const { email, otp } = req.body;
+    const result = await handleVerifyOtpAndGenerateUUID(email, otp);
+    res.json(result);
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const resetPassword = async (req, res, next) => {
+  try {
+    const { uuid, password, confirmPassword } = req.body;
+    const result = await handlePasswordReset(uuid, password, confirmPassword);
+    res.json(result);
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const sendForgotPasswordOtp = async (req, res, next) => {
+  try {
+    const { email } = req.body;
+    const result = await handleSendOtp(email);
     res.json(result);
   } catch (err) {
     next(err);

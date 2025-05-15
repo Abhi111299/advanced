@@ -127,7 +127,11 @@ exports.Prisma.UserScalarFieldEnum = {
   email: 'email',
   gender: 'gender',
   age: 'age',
-  location: 'location'
+  location: 'location',
+  otp: 'otp',
+  otpExpiry: 'otpExpiry',
+  resetUUID: 'resetUUID',
+  resetUUIDExpiry: 'resetUUIDExpiry'
 };
 
 exports.Prisma.SortOrder = {
