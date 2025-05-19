@@ -20,6 +20,24 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
 
 /**
+ * Enums
+ */
+export namespace $Enums {
+  export const Role: {
+  ADMIN: 'ADMIN',
+  EMPLOYEE: 'EMPLOYEE',
+  CUSTOMER: 'CUSTOMER'
+};
+
+export type Role = (typeof Role)[keyof typeof Role]
+
+}
+
+export type Role = $Enums.Role
+
+export const Role: typeof $Enums.Role
+
+/**
  * ##  Prisma Client ʲˢ
  *
  * Type-safe database client for TypeScript & Node.js
@@ -903,6 +921,7 @@ export namespace Prisma {
     otpExpiry: Date | null
     resetUUID: string | null
     resetUUIDExpiry: Date | null
+    role: $Enums.Role | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -917,6 +936,7 @@ export namespace Prisma {
     otpExpiry: Date | null
     resetUUID: string | null
     resetUUIDExpiry: Date | null
+    role: $Enums.Role | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -931,6 +951,7 @@ export namespace Prisma {
     otpExpiry: number
     resetUUID: number
     resetUUIDExpiry: number
+    role: number
     _all: number
   }
 
@@ -957,6 +978,7 @@ export namespace Prisma {
     otpExpiry?: true
     resetUUID?: true
     resetUUIDExpiry?: true
+    role?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -971,6 +993,7 @@ export namespace Prisma {
     otpExpiry?: true
     resetUUID?: true
     resetUUIDExpiry?: true
+    role?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -985,6 +1008,7 @@ export namespace Prisma {
     otpExpiry?: true
     resetUUID?: true
     resetUUIDExpiry?: true
+    role?: true
     _all?: true
   }
 
@@ -1086,6 +1110,7 @@ export namespace Prisma {
     otpExpiry: Date | null
     resetUUID: string | null
     resetUUIDExpiry: Date | null
+    role: $Enums.Role
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1119,6 +1144,7 @@ export namespace Prisma {
     otpExpiry?: boolean
     resetUUID?: boolean
     resetUUIDExpiry?: boolean
+    role?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1133,6 +1159,7 @@ export namespace Prisma {
     otpExpiry?: boolean
     resetUUID?: boolean
     resetUUIDExpiry?: boolean
+    role?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1147,6 +1174,7 @@ export namespace Prisma {
     otpExpiry?: boolean
     resetUUID?: boolean
     resetUUIDExpiry?: boolean
+    role?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -1161,9 +1189,10 @@ export namespace Prisma {
     otpExpiry?: boolean
     resetUUID?: boolean
     resetUUIDExpiry?: boolean
+    role?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "password" | "email" | "gender" | "age" | "location" | "otp" | "otpExpiry" | "resetUUID" | "resetUUIDExpiry", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "password" | "email" | "gender" | "age" | "location" | "otp" | "otpExpiry" | "resetUUID" | "resetUUIDExpiry" | "role", ExtArgs["result"]["user"]>
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
@@ -1180,6 +1209,7 @@ export namespace Prisma {
       otpExpiry: Date | null
       resetUUID: string | null
       resetUUIDExpiry: Date | null
+      role: $Enums.Role
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1614,6 +1644,7 @@ export namespace Prisma {
     readonly otpExpiry: FieldRef<"User", 'DateTime'>
     readonly resetUUID: FieldRef<"User", 'String'>
     readonly resetUUIDExpiry: FieldRef<"User", 'DateTime'>
+    readonly role: FieldRef<"User", 'Role'>
   }
     
 
@@ -2005,7 +2036,8 @@ export namespace Prisma {
     otp: 'otp',
     otpExpiry: 'otpExpiry',
     resetUUID: 'resetUUID',
-    resetUUIDExpiry: 'resetUUIDExpiry'
+    resetUUIDExpiry: 'resetUUIDExpiry',
+    role: 'role'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -2083,6 +2115,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Role'
+   */
+  export type EnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role'>
+    
+
+
+  /**
+   * Reference to a field of type 'Role[]'
+   */
+  export type ListEnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -2114,6 +2160,7 @@ export namespace Prisma {
     otpExpiry?: DateTimeNullableFilter<"User"> | Date | string | null
     resetUUID?: StringNullableFilter<"User"> | string | null
     resetUUIDExpiry?: DateTimeNullableFilter<"User"> | Date | string | null
+    role?: EnumRoleFilter<"User"> | $Enums.Role
   }
 
   export type UserOrderByWithRelationInput = {
@@ -2128,6 +2175,7 @@ export namespace Prisma {
     otpExpiry?: SortOrderInput | SortOrder
     resetUUID?: SortOrderInput | SortOrder
     resetUUIDExpiry?: SortOrderInput | SortOrder
+    role?: SortOrder
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -2145,6 +2193,7 @@ export namespace Prisma {
     otpExpiry?: DateTimeNullableFilter<"User"> | Date | string | null
     resetUUID?: StringNullableFilter<"User"> | string | null
     resetUUIDExpiry?: DateTimeNullableFilter<"User"> | Date | string | null
+    role?: EnumRoleFilter<"User"> | $Enums.Role
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -2159,6 +2208,7 @@ export namespace Prisma {
     otpExpiry?: SortOrderInput | SortOrder
     resetUUID?: SortOrderInput | SortOrder
     resetUUIDExpiry?: SortOrderInput | SortOrder
+    role?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -2181,6 +2231,7 @@ export namespace Prisma {
     otpExpiry?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     resetUUID?: StringNullableWithAggregatesFilter<"User"> | string | null
     resetUUIDExpiry?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    role?: EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
   }
 
   export type UserCreateInput = {
@@ -2194,6 +2245,7 @@ export namespace Prisma {
     otpExpiry?: Date | string | null
     resetUUID?: string | null
     resetUUIDExpiry?: Date | string | null
+    role?: $Enums.Role
   }
 
   export type UserUncheckedCreateInput = {
@@ -2208,6 +2260,7 @@ export namespace Prisma {
     otpExpiry?: Date | string | null
     resetUUID?: string | null
     resetUUIDExpiry?: Date | string | null
+    role?: $Enums.Role
   }
 
   export type UserUpdateInput = {
@@ -2221,6 +2274,7 @@ export namespace Prisma {
     otpExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     resetUUID?: NullableStringFieldUpdateOperationsInput | string | null
     resetUUIDExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
   }
 
   export type UserUncheckedUpdateInput = {
@@ -2235,6 +2289,7 @@ export namespace Prisma {
     otpExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     resetUUID?: NullableStringFieldUpdateOperationsInput | string | null
     resetUUIDExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
   }
 
   export type UserCreateManyInput = {
@@ -2249,6 +2304,7 @@ export namespace Prisma {
     otpExpiry?: Date | string | null
     resetUUID?: string | null
     resetUUIDExpiry?: Date | string | null
+    role?: $Enums.Role
   }
 
   export type UserUpdateManyMutationInput = {
@@ -2262,6 +2318,7 @@ export namespace Prisma {
     otpExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     resetUUID?: NullableStringFieldUpdateOperationsInput | string | null
     resetUUIDExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -2276,6 +2333,7 @@ export namespace Prisma {
     otpExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     resetUUID?: NullableStringFieldUpdateOperationsInput | string | null
     resetUUIDExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -2341,6 +2399,13 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
+  export type EnumRoleFilter<$PrismaModel = never> = {
+    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -2358,6 +2423,7 @@ export namespace Prisma {
     otpExpiry?: SortOrder
     resetUUID?: SortOrder
     resetUUIDExpiry?: SortOrder
+    role?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -2377,6 +2443,7 @@ export namespace Prisma {
     otpExpiry?: SortOrder
     resetUUID?: SortOrder
     resetUUIDExpiry?: SortOrder
+    role?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -2391,6 +2458,7 @@ export namespace Prisma {
     otpExpiry?: SortOrder
     resetUUID?: SortOrder
     resetUUIDExpiry?: SortOrder
+    role?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -2480,6 +2548,16 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type EnumRoleWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoleWithAggregatesFilter<$PrismaModel> | $Enums.Role
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumRoleFilter<$PrismaModel>
+    _max?: NestedEnumRoleFilter<$PrismaModel>
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -2498,6 +2576,10 @@ export namespace Prisma {
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
     set?: Date | string | null
+  }
+
+  export type EnumRoleFieldUpdateOperationsInput = {
+    set?: $Enums.Role
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -2567,6 +2649,13 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedEnumRoleFilter<$PrismaModel = never> = {
+    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -2669,6 +2758,16 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumRoleWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoleWithAggregatesFilter<$PrismaModel> | $Enums.Role
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumRoleFilter<$PrismaModel>
+    _max?: NestedEnumRoleFilter<$PrismaModel>
   }
 
 

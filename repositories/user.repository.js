@@ -2,8 +2,8 @@
 import prisma from '../config/prisma.js';
 
 
-export const findUserByEmailWithPassword = async (email) => {
+export const findUserByEmailWithPassword = async (email, role) => {
   return prisma.user.findUnique({
-    where: { email }
+    where: { email, role }
   });
 };

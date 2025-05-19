@@ -19,6 +19,7 @@ export const registerSchema = Joi.object({
       'number.integer': 'Age must be an integer',
     }),
     location: Joi.string().optional(),
+    role: Joi.string().valid('ADMIN', 'EMPLOYEE', 'CUSTOMER').optional()
   });
 
 export const loginSchema = Joi.object({

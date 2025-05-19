@@ -9,6 +9,12 @@ datasource db {
   // We do NOT put the connection URL here. We will manage it in a separate JS file.
 }
 
+enum Role {
+  ADMIN
+  EMPLOYEE
+  CUSTOMER
+}
+
 model User {
   id              Int       @id @default(autoincrement()) // Auto-incrementing ID
   username        String
@@ -21,4 +27,5 @@ model User {
   otpExpiry       DateTime?
   resetUUID       String?
   resetUUIDExpiry DateTime?
+  role            Role      @default(CUSTOMER)
 }
