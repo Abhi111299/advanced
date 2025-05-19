@@ -11,8 +11,8 @@ export const validateUserRegistration = async ({ email }) => {
   }
 };
 
-export const validateUserLogin = async ({ email, password }) => {
-    const user = await findUserByEmailWithPassword(email);
+export const validateUserLogin = async ({ email, password, role}) => {
+    const user = await findUserByEmailWithPassword(email, role);
     if (!user) {
       throw new ApiError(422, 'User not found');
     }

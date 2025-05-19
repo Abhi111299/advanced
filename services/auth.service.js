@@ -7,18 +7,18 @@ import { validateUserRegistration, validateUserLogin } from '../validations/user
 import crypto from 'crypto';
 import { sendEmail } from '../utils/email.js';
 
-export const registerUser = async ({ username, password, email, gender, age, location }) => {
+export const registerUser = async ({ username, password, email, gender, age, location, role }) => {
   await validateUserRegistration({ email });
 
   const hashed = await hashPassword(password);
-  const user = await prisma.user.create({ data: { username, email, gender, age, location, password: hashed } });
+  const user = await prisma.user.create({ data: { username, email, gender, age, location, password: hashed, role } });
   return { userId: user.id };
 };
 
-export const loginUser = async ({ email, password }) => {
-  const user = await validateUserLogin({ email , password});
-  const accessToken = AuthToken.generateAccessToken(user.id);
-  const refreshToken = AuthToken.generateRefreshToken(user.id);
+export const loginUser = async ({ email, password, role }) => {
+  const user = await validateUserLogin({ email , password, role});
+  const accessToken = AuthToken.generateAccessToken(user.id, user.role);
+  const refreshToken = AuthToken.generateRefreshToken(user.id, user.role);
   return { user, accessToken, refreshToken };
 };
 

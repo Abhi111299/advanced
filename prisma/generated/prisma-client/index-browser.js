@@ -131,7 +131,8 @@ exports.Prisma.UserScalarFieldEnum = {
   otp: 'otp',
   otpExpiry: 'otpExpiry',
   resetUUID: 'resetUUID',
-  resetUUIDExpiry: 'resetUUIDExpiry'
+  resetUUIDExpiry: 'resetUUIDExpiry',
+  role: 'role'
 };
 
 exports.Prisma.SortOrder = {
@@ -148,7 +149,11 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
+exports.Role = exports.$Enums.Role = {
+  ADMIN: 'ADMIN',
+  EMPLOYEE: 'EMPLOYEE',
+  CUSTOMER: 'CUSTOMER'
+};
 
 exports.Prisma.ModelName = {
   User: 'User'
