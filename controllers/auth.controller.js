@@ -13,8 +13,8 @@ export const register = async (req, res, next) => {
 
 export const registerByAdmin = async (req, res, next) => {
   try{
-    const currentUserRole = req.body?.role;
-    console.log("currentUserRole======>", req.body?.role);
+    const currentUserRole = req.user?.role;
+    console.log("currentUserRole======>", req.user);
     if (currentUserRole !== 'ADMIN') {
       return res.status(403).json({ message: 'Only admin can register users with roles' });
     }
