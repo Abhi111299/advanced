@@ -24,6 +24,8 @@
     "pg": "^8.15.6",
     "prisma": "^6.7.0",
     "sequelize": "^6.37.7",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
     "v4": "^0.0.1"
   },
   "devDependencies": {
