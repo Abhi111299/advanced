@@ -1,5 +1,5 @@
 import express from 'express';
-import { register, registerByAdmin, login, sendForgotPasswordOtp,
+import { register, login, sendForgotPasswordOtp,
   verifyOtp,
   resetPassword } from '../controllers/auth.controller.js';
 // import { createCategory } from '../controllers/category.controller.js';
@@ -17,6 +17,5 @@ router.post('/verify-otp', verifyOtp);
 router.post('/reset-password', resetPassword);
 
 // Protected Registration Api
-router.post('/admin/register', authenticate, validate(registerSchema), registerByAdmin);
 // router.post('/admin/category', authenticate, validate(categorySchema), createCategory);
 export default router;
