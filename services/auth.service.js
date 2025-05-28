@@ -41,6 +41,7 @@ export const handleSendOtp = async (email) => {
 
 export const handleVerifyOtpAndGenerateUUID = async (email, otp) => {
   const user = await prisma.user.findUnique({ where: { email } });
+  console.log(!user || user.otp !== otp || user.otpExpiry < new Date())
   if (!user || user.otp !== otp || user.otpExpiry < new Date()) {
     throw new ApiError(400, 'Invalid or expired OTP');
   }

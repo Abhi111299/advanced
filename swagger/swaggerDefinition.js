@@ -1,10 +1,11 @@
 import auth from './docs/auth/index.js';
+import admin from './docs/admin/index.js';
 
 const swaggerDefinition = {
   openapi: '3.0.3',
   info: {
     title: 'APIs',
-    description: 'This includes the all the APIs.',
+    description: 'This includes all the APIs.',
     contact: {
       name: 'Engineering Team',
     },
@@ -17,7 +18,8 @@ const swaggerDefinition = {
     },
   ],
   paths: {
-    ...auth
+    ...auth,
+    ...admin
   },
   components: {
     securitySchemes: {
