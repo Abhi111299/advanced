@@ -20,7 +20,7 @@ export const getAllCategory = async(req, res, next) => {
 
 export const getSingleCategory = async(req, res, next) => {
     try{
-        const fetchCategories = await findOneCategory(req.params.id);
+        const fetchCategories = await findOneCategory(parseInt(req.params.id));
         res.status(201).json({ message: 'All categories fetched successfully', fetchCategories });
     }catch (err){
         next(err);
