@@ -1,5 +1,6 @@
 import auth from './docs/auth/index.js';
 import admin from './docs/admin/index.js';
+import category from './docs/category/index.js';
 
 const swaggerDefinition = {
   openapi: '3.0.3',
@@ -19,7 +20,8 @@ const swaggerDefinition = {
   ],
   paths: {
     ...auth,
-    ...admin
+    ...admin,
+    ...category
   },
   components: {
     securitySchemes: {
