@@ -32,3 +32,10 @@ export const loginSchema = Joi.object({
     'string.email': 'Email must be a valid email',
   })
 })
+
+export const categorySchema = Joi.object({
+    name: Joi.string().min(3).required().messages({
+      'any.required': 'Category name is required',
+      'string.min': 'Category must be at least 3 characters',
+    }),
+  });
