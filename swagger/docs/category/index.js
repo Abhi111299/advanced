@@ -79,7 +79,7 @@ const admin = {
             },
             },
         },
-        '/get_category/{id}': {
+        '/admin/get_category/{id}': {
             get: {
             tags: ['Category'],
             summary: 'Get Category details',
